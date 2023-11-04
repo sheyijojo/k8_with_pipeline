@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "myapp.fullname" . }}
+  labels:
+    {{- include "myapp.labels" . | nindent 4 }}
+    tags.datadoghq.com/env: dev
+    tags.datadoghq.com/service: firstservice
+    tags.datadoghq.com/version: "7"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "myapp.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:     
+        {{- include "myapp.selectorLabels" . | nindent 8 }}
+        tags.datadoghq.com/env: dev
+        tags.datadoghq.com/service: firstservice
+        tags.datadoghq.com/version: "7"
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}      
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: DD_LOGS_INJECTION
+              value: "true"
+          resources:
+            requests:
+              memory: 0.25Gi
+              cpu: 0.5
+            limits:
+              memory: 0.25Gi 
+              cpu: 0.5
+

@@ -1,0 +1,9 @@
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Ignore executable files
+*.exe
+
+# Ignore HCL files
+*.hcl
