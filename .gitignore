@@ -5,5 +5,11 @@
 # Ignore executable files
 *.exe
 
+jenkinsfile
 # Ignore HCL files
 *.hcl
+.terraform
+*.tfstate
+*.tfstate.backup
+*.key
+*.keys
