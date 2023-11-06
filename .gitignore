@@ -5,6 +5,8 @@
 # Ignore executable files
 *.exe
 Jenkinsfile
+*Jenkinsfile
+*.Jenkinsfile
 jenkinsfile
 # Ignore HCL files
 *.hcl
