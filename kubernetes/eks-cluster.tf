@@ -1,7 +1,7 @@
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "~> 19.0"
-  cluster_endpoint_public_access  = true
+  source                         = "terraform-aws-modules/eks/aws"
+  version                        = "~> 19.0"
+  cluster_endpoint_public_access = true
   cluster_addons = {
     coredns = {
       most_recent = true
@@ -13,13 +13,13 @@ module "eks" {
       most_recent = true
     }
   }
-  
 
-  cluster_name = "myAppp-eks-cluster"  
+
+  cluster_name    = "myAppp-eks-cluster"
   cluster_version = "1.27"
 
   subnet_ids = module.myAppp-vpc.private_subnets
-  vpc_id = module.myAppp-vpc.vpc_id
+  vpc_id     = module.myAppp-vpc.vpc_id
 
   tags = {
     environment = "development"
@@ -33,7 +33,7 @@ module "eks" {
       desired_size = 3
 
       instance_types = ["t2.small"]
-      key_name       = "devopskeypair"
+      key_name       = "cloudconvokey"
     }
   }
 }

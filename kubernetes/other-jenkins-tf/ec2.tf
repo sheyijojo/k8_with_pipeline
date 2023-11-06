@@ -106,7 +106,7 @@ resource "aws_instance" "ec2_instance" {
   instance_type          = "t2.small"
   subnet_id              = aws_default_subnet.default_az1.id
   vpc_security_group_ids = [aws_security_group.ec2_security_group4.id]
-  key_name               = "devopskeypair" #change this
+  key_name               = "cloudconvokey" #change this
   user_data              = file("install_jenkins.sh")
 
   tags = {
