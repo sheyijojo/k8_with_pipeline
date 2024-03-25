@@ -1,3 +1,7 @@
+##used the commercial edition
+
+#https://blog.devops.dev/how-to-install-sonarqube-on-linux-rhel-centos-57eb5893be
+
 #!/bin/bash
 sudo cp /etc/sysctl.conf /root/sysctl.conf_backup
 
@@ -33,7 +37,10 @@ EOF'
 # Sonarqube installation and setup
     sudo mkdir /sonarqube/
     cd /sonarqube/
-    sudo curl -O https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-developer-10.4.0.87286.zip
+    sudo curl -O https://binaries.sonarsource.com/CommercialDistribution/sonarqube-developer/sonarqube-developer-10.2.0.77647.zip
+  ## sonarqube-9.9.4.87374.zip
+  ##  sonarqube-developer-10.2.1.78527.zip
+   ## sonarqube-developer-10.4.0.87286.zip
 
     sudo apt-get install zip -y
     sudo unzip -o sonarqube-8.3.0.34182.zip -d /opt/
@@ -49,7 +56,7 @@ EOF'
     sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube
     sonar.web.host=0.0.0.0
     sonar.web.port=9000
- i   sonar.web.javaAdditionalOpts=-server
+    sonar.web.javaAdditionalOpts=-server
     sonar.search.javaOpts=-Xmx512m -Xms512m -XX:+HeapDumpOnOutOfMemoryError
     sonar.log.level=INFO
     sonar.path.logs=logs
